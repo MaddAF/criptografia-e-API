@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+    font-family: Anonymous Pro;
+}
+
+body{
+    height: 100vh;
+    background-color: black;
+    color: #20C20E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
