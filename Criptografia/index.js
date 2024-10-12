@@ -2,19 +2,20 @@ const chave = 'tarkovsky'
 var espacos
 
 
-function showPalavra() {
+function showPalavra() {//Função principal que é chamada quando se clica no botão
+
     const displayCriptografada = document.getElementById('criptografada')
 
-    document.getElementById('decriptografada').style.display = "none"
+    document.getElementById('decriptografada').style.display = "none" //Esconde o elemento que mostra a palavra decriptografada
 
-    var palavra = document.getElementById('palavra').value.toString().toLowerCase()
-    espacos = findSpaces(palavra)
-    palavra = (palavra.split(" ")).join("")
-    const criptografada = cripMenssagem(palavra)
+    var palavra = document.getElementById('palavra').value.toString().toLowerCase() //Formata a string recebida para garantir que todos os caracteres sejam minusculos
+    espacos = findSpaces(palavra) // Acha quantos espaços em branco a mensagem possue e em que posição da string eles estão
+    palavra = (palavra.split(" ")).join("") //Remove os espaços em branco
+    const criptografada = cripMenssagem(palavra) //Criptografa a mensagem
 
-    displayCriptografada.innerText = devolveEspaços(criptografada,espacos)
+    displayCriptografada.innerText = devolveEspaços(criptografada,espacos) // Devolve os espaços à e mostra a palavra criptografada
 
-    posta( "https://desafio9.onrender.com/decrypt_message", criptografada)
+    posta( "https://desafio9.onrender.com/decrypt_message", criptografada) // Faz a requisição http
 
 }
 
@@ -23,7 +24,7 @@ function criptografar(palavra) {
     var indexSync = 0
     var output = []
 
-    for (let index = 0; index < palavra.length; index++) {
+    for (let index = 0; index < palavra.length; index++) { //Olha cada char de uma PALAVRA e criptografa cada um aplicando a formula aos valores ASCII dos char's e guarda cada um em uma lista
 
         if (indexSync>= chave.length) {
             indexSync = 0
@@ -40,10 +41,10 @@ function criptografar(palavra) {
         output[index] = criptografado
         indexSync++
     }
-    return output.join("")
+    return output.join("") // Junta os caracteres em uma unica string
 }
 
-function cripMenssagem(menssagem) {
+function cripMenssagem(menssagem) { // Aplica a função "criptografar" em todas as palavras de uma mensagem
     var palavras = menssagem.split(" ")
     var output = []
     for (let index = 0; index < palavras.length; index++) {
@@ -56,16 +57,16 @@ function posta(url, menssagem) {
     var piririm = new XMLHttpRequest();
     piririm.open("POST", url, true);
     piririm.setRequestHeader("Content-type", "application/json");
-    document.getElementById('loading').style.display = "block"
+    document.getElementById('loading').style.display = "block" // Mostra o simbolo de carregamento
     piririm.onreadystatechange = function() {
-        if (piririm.readyState == 4 && piririm.status == 200) {
-            document.getElementById('loading').style.display = "none"
-            var response = JSON.parse(piririm.responseText); 
+        if (piririm.readyState == 4 && piririm.status == 200) { //Ativa quando o request é atendido com status 200
+            document.getElementById('loading').style.display = "none" // Esconde o simbolo de carregamento
+            var response = JSON.parse(piririm.responseText);
             console.log("O que eu recebi: ",response); 
 
             var resposta = response.decrypted_message;
             console.log("resposta   ",resposta)
-            document.getElementById('decriptografada').innerText = devolveEspaços(resposta, espacos)
+            document.getElementById('decriptografada').innerText = devolveEspaços(resposta, espacos) //Devolve os espaços e mostra a palavra decriptografada na tela
             document.getElementById('decriptografada').style.display = "block"
         }
     };
@@ -75,7 +76,7 @@ function posta(url, menssagem) {
 }
 
 
-function prepMenssagem(menssagem) {
+function prepMenssagem(menssagem) { //Transforma a string em json preparando a mensagem para ser usada no request
     json = {
         "encrypted_message": menssagem,
         "keyword": chave
@@ -102,7 +103,7 @@ function isWhite(c){ //Função booleana que checa se um character C é ou não 
     }
 }
 
-function devolveEspaços(msg, lista) { //Lista é uma lista 
+function devolveEspaços(msg, lista) {
     var arr = [...msg]
 
     for (let i = 0; i < lista.length; i++) {
