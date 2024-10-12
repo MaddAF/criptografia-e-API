@@ -1,3 +1,114 @@
 p{
     text-align: center;
 }
+
+.MainBox{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.OutputBox{
+    display: flex;
+    flex-direction: row;
+}
+
+.outCaixa{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin: 2vh;
+    outline: 0.3vw solid #20C20E;
+    padding: 0 2vw;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input{
+    height: 5vh;
+    width: 25vw;
+    padding: 1vw;
+    font-size: larger;
+    font-weight: 700;
+    color: #20C20E;
+    background-color: black;
+    border: none;
+    border-bottom: 0.3vh solid #20C20E !important;
+}
+input:focus{
+    outline: none;
+}
+label{
+    font-size: 5vh;
+}
+
+#bttn{
+    width: 15vw;
+    height: 3vh;
+    color: black;
+    font-size: larger;
+    background-color: #20C20E;
+    border: none;
+}
+
+.legenda{
+    margin: 0 2vw;
+    color: black;
+    background-color: #20C20E;
+    padding: 0 2vw;
+}
+
+#loading{
+    display: none;
+}
+
+.caixa{
+    margin: 2vh;
+    padding: 0 2vh;
+    border: 0.5vh solid #20C20E;
+}
+
+.caixa p{
+    text-align: justify;
+    font-size: 3vh;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 40px;
+    aspect-ratio: 1;
+    --c: linear-gradient(#20C20E 0 0);
+    --r1: radial-gradient(farthest-side at bottom,#20C20E 93%,#20C20E);
+    --r2: radial-gradient(farthest-side at top   ,#20C20E 93%,#20C20E);
+    background: 
+      var(--c) ,var(--r1),var(--r2),
+      var(--c) ,var(--r1),var(--r2),
+      var(--c) ,var(--r1),var(--r2);
+    background-repeat: no-repeat;
+    animation: l2 1s infinite alternate;
+  }
+  @keyframes l2 {
+    0%,25% {
+      background-size: 8px 0,8px 4px,8px 4px,8px 0,8px 4px,8px 4px,8px 0,8px 4px,8px 4px;
+      background-position: 0 50%,0 calc(50% - 2px),0 calc(50% + 2px),50% 50%,50% calc(50% - 2px),50% calc(50% + 2px),100% 50%,100% calc(50% - 2px),100% calc(50% + 2px);
+   }
+   50% {
+      background-size: 8px 100%,8px 4px,8px 4px,8px 0,8px 4px,8px 4px,8px 0,8px 4px,8px 4px;
+      background-position: 0 50%,0 calc(0% - 2px),0 calc(100% + 2px),50% 50%,50% calc(50% - 2px),50% calc(50% + 2px),100% 50%,100% calc(50% - 2px),100% calc(50% + 2px);
+   }
+   75% {
+      background-size: 8px 100%,8px 4px,8px 4px,8px 100%,8px 4px,8px 4px,8px 0,8px 4px,8px 4px;
+      background-position: 0 50%,0 calc(0% - 2px),0 calc(100% + 2px),50% 50%,50% calc(0% - 2px),50% calc(100% + 2px),100% 50%,100% calc(50% - 2px),100% calc(50% + 2px);
+   }
+   95%,100% {
+      background-size: 8px 100%,8px 4px, 8px 4px,8px 100%,8px 4px,8px 4px,8px 100%,8px 4px,8px 4px;
+      background-position: 0 50%,0 calc(0% - 2px),0 calc(100% + 2px),50% 50%,50% calc(0% - 2px),50% calc(100% + 2px),100% 50%,100% calc(0% - 2px),100% calc(100% + 2px);
+   }
+  }

@@ -18,14 +18,32 @@
 <body>
     <div class="MainBox">
         <form>
-            <label for="fname">Palavra:</label><br>
+            <label for="fname">Envie uma menssagem:</label><br>
             <input type="text" id="palavra"><br>
         </form>
-        <button id="bttn" onclick="showPalavra()">testar</button>
-        <p>mensagem criptografada:</p>
-        <p id="criptografada"></p>
-        <p>mensagem decriptografada:</p>
-        <p id="decriptografada"></p>
+        <button id="bttn" onclick="showPalavra()">Testar</button>
+        <div class="OutputBox">
+            <div>
+                <div class="crip outCaixa">
+                    <p id="criptografada">Digite alguma coisa</p>
+                </div>
+                <p class="legenda">MENSAGEM CRIPTOGRAFADA</p>
+            </div>
+            <div>
+                <div class="decrip outCaixa">
+                    <p id="decriptografada">lá em cima</p>
+                    <div class="loader" id="loading"></div>
+                </div>
+                <p class="legenda">MENSAGEM DESCRIPTOGRAFADA</p>
+            </div>
+        </div>
+        <div class="instruction caixa">
+            <p>Instruções:</p>
+            <p>
+                Quando digitar a mensagem por favor use apenas caracteres ASCII, nada de virgulas, ácéntós nem nenhuma outra maluquicie.<br>(Θ︹Θ)ს<br>Sempre clique em "Testar" para enviar uma mensagem, se você apertar Enter vai recarregar a página :(
+                <br><br>:･ﾟ✧:･.☽˚｡･ﾟ✧:･.::･ﾟ✧:･.☽˚｡･ﾟ✧:･.::･ﾟ✧:･.⋆｡ ﾟ☁︎｡ ⋆｡ ﾟ☾ ﾟ｡ ⋆･.☽˚｡･ﾟ✧:･.::･ﾟ✧:･.☽˚｡⋆｡ ﾟ☁︎｡ ⋆｡ ﾟ☾ ﾟ
+            </p>
+        </div>
     </div>
 </body>
 </html>

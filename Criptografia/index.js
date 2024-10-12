@@ -1,8 +1,11 @@
 const chave = 'tarkovsky'
 var espacos
 
+
 function showPalavra() {
     const displayCriptografada = document.getElementById('criptografada')
+
+    document.getElementById('decriptografada').style.display = "none"
 
     var palavra = document.getElementById('palavra').value.toString().toLowerCase()
     espacos = findSpaces(palavra)
@@ -53,15 +56,17 @@ function posta(url, menssagem) {
     var piririm = new XMLHttpRequest();
     piririm.open("POST", url, true);
     piririm.setRequestHeader("Content-type", "application/json");
- 
+    document.getElementById('loading').style.display = "block"
     piririm.onreadystatechange = function() {
         if (piririm.readyState == 4 && piririm.status == 200) {
+            document.getElementById('loading').style.display = "none"
             var response = JSON.parse(piririm.responseText); 
             console.log("O que eu recebi: ",response); 
 
             var resposta = response.decrypted_message;
             console.log("resposta   ",resposta)
             document.getElementById('decriptografada').innerText = devolveEspaços(resposta, espacos)
+            document.getElementById('decriptografada').style.display = "block"
         }
     };
 
